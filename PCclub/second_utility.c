@@ -1,6 +1,43 @@
 #include "type.h"
 #include "second_utility.h"
 
+int is_valid_time_format(const char *time_str)
+{
+    if (strlen(time_str) != 5)
+    {
+        return 0;
+    }
+    if (time_str[2] != ':')
+    {
+        return 0;
+    }
+    for (int i = 0; i < 5; i++)
+    {
+        if (i != 2 && (time_str[i] < '0' || time_str[i] > '9'))
+        {
+            return 0;
+        }
+    }
+
+    int hours, minutes;
+    sscanf(time_str, "%2d:%2d", &hours, &minutes);
+    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59)
+    {
+        return 0;
+    }
+    return 1;
+}
+
+int is_valid_format(const int *valid_format)
+{
+    int value = *valid_format;
+    if (value <= 0)
+    {
+        return 0;
+    }
+    return 1;
+}
+
 int time_to_minutes(const char *time_str) {
     int hours, minutes;
     sscanf(time_str, "%d:%d", &hours, &minutes);

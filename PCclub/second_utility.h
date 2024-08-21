@@ -12,4 +12,4 @@ void remove_client(Client *client);
 void print_error(const char *time, int id, const char *message);
 void print_table_summary();
 
-#endif // UTIL_H
+#endif
